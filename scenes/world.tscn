@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxmywm1jqsbn1"]
+
+[ext_resource type="Texture2D" uid="uid://cfidmrc6c1dqw" path="res://assets/tiles.png" id="1_rwgxs"]
+[ext_resource type="Script" uid="uid://cipfufd81i71e" path="res://scripts/tilemap.gd" id="2_4wyf3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
+texture = ExtResource("1_rwgxs")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_k0juu"]
+sources/0 = SubResource("TileSetAtlasSource_4wyf3")
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_k0juu")
+format = 2
+script = ExtResource("2_4wyf3")
+mapWidth = 85
+mapHeight = 49
+minRoomSize = 12
+maxRoomSize = 20
+
+[node name="Button" type="Button" parent="TileMap"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 134.0
+offset_top = 154.0
+offset_right = 187.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "Generate"
+
+[connection signal="pressed" from="TileMap/Button" to="TileMap" method="_on_button_pressed"]
