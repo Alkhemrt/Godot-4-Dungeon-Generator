@@ -26,7 +26,6 @@ func generate(map: TileMap, w: int, h: int, minRoomSize: int, maxRoomSize: int, 
 	mapHeight = h
 	dugRooms.clear()
 
-	# Fill map with solid tiles
 	for r in range(-1, h + 1):
 		for c in range(-1, w + 1):
 			map.set_cell(0, Vector2i(c, r), 0, Vector2i(Tiles.SOLID, 0))
@@ -68,8 +67,6 @@ func generate(map: TileMap, w: int, h: int, minRoomSize: int, maxRoomSize: int, 
 func connectRooms(map, roomA: Room, roomB: Room):
 	var start = roomA.centerpoint.floor()
 	var end = roomB.centerpoint.floor()
-
-	# L-shaped corridor: horizontal then vertical or vice versa
 	if rng.randf() < 0.5:
 		digLine(map, start, Vector2(end.x, start.y))
 		digLine(map, Vector2(end.x, start.y), end)
